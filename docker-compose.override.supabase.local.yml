@@ -1,0 +1,14 @@
+# Override file for Supabase to avoid port conflicts
+# Use this with: docker compose -f supabase/docker/docker-compose.yml -f docker-compose.override.supabase.local.yml up -d
+
+services:
+  analytics:
+    ports:
+      - 127.0.0.1:5000:4000  # Changed from 4000 to 5000 to avoid conflict with Langfuse
+    # Remove the default 4000:4000 binding that's in the base file
+  
+  supavisor:
+    ports:
+      - 127.0.0.1:5434:5432  # Use 5434 instead of 5432 to avoid conflict with localai-postgres-1 on 5433
+      - 127.0.0.1:6543:6543  # Transaction port
+

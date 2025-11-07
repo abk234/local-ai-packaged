@@ -1,0 +1,75 @@
+# Custom port mappings to avoid conflicts with existing services
+# Use this file if you have port conflicts with other Docker containers
+# 
+# To use this file, run:
+# docker compose -f docker-compose.yml -f docker-compose.override.private.yml -f docker-compose.override.local.yml up -d
+#
+# Or modify start_services.py to include this file automatically
+
+services:
+  flowise:
+    ports:
+      - 127.0.0.1:3001:3001
+
+  open-webui:
+    ports:
+      - 127.0.0.1:8080:8080
+
+  n8n:
+    ports:
+      - 127.0.0.1:6678:5678  # Changed from 5678 to avoid conflict
+
+  qdrant:
+    ports:
+      - 127.0.0.1:7333:6333  # Changed from 6333
+      - 127.0.0.1:7334:6334  # Changed from 6334
+
+  neo4j:
+    ports:
+      - 127.0.0.1:7473:7473
+      - 127.0.0.1:7474:7474
+      - 127.0.0.1:7687:7687
+
+  langfuse-worker:
+    ports:
+      - 127.0.0.1:4030:3030  # Changed from 3030 to avoid conflict
+
+  langfuse-web:
+    ports:
+      - 127.0.0.1:4000:3000  # Changed from 3000 to avoid conflict
+
+  clickhouse:
+    ports:
+      - 127.0.0.1:9123:8123  # Changed from 8123 to avoid conflict
+      - 127.0.0.1:10000:9000  # Changed from 9000 to avoid conflict
+      - 127.0.0.1:9009:9009
+
+  minio:
+    ports:
+      - 127.0.0.1:9010:9000  # Changed mapping to avoid conflict
+      - 127.0.0.1:9011:9001
+
+  postgres:
+    ports:
+      - 127.0.0.1:6433:5432  # Changed from 5433 to avoid conflict
+
+  redis:
+    ports:
+      - 127.0.0.1:7379:6379  # Changed from 6379 to avoid conflict
+
+  searxng:
+    ports:
+      - 127.0.0.1:8081:8080
+
+  ollama-cpu:
+    ports:
+      - 127.0.0.1:12434:11434  # Changed from 11434 to avoid conflict
+
+  ollama-gpu:
+    ports:
+      - 127.0.0.1:12434:11434  # Changed from 11434 to avoid conflict
+      
+  ollama-gpu-amd:
+    ports:
+      - 127.0.0.1:12434:11434  # Changed from 11434 to avoid conflict
+
